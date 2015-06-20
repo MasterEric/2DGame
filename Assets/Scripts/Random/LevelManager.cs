@@ -23,15 +23,7 @@ public class LevelManager : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		this.tag = "LevelManager";
-		levelQueue = new Level[5];
-		InitializeLevel();
-	}
-
-	IEnumerator InitializeLevel() {
-		//Load first 3 levels.
-		if(tutorialLevel == null)
-			yield return null;
-		
+		levelQueue = new Level[5];	
 		levelQueue[2] = tutorialLevel.GetComponent<Level>();
 		levelQueue[3] = AddLevel(GetRandomPrefabIndex());
 		PositionLevel(levelQueue[2], levelQueue[3]);

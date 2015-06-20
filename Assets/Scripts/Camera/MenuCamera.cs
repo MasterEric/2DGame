@@ -18,6 +18,8 @@ public class MenuCamera : MonoBehaviour {
 			target = LevelManager.GetLevelManager().levelQueue[2].GetExitPositionVector3() + (Vector3.back * 10);
 			startTime = Time.time;
 			journeyLength = Vector3.Distance(start, target);
+		} else if (LevelManager.GetLevelManager().levelQueue[2] == null) {
+			Debug.Log ("Level is null");
 		} else {
 			if(transform.position == target) {
 				hasMadeTarget = false;

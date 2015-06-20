@@ -25,10 +25,10 @@ public class Level : MonoBehaviour {
 		if(this.topExit == null)
 			Debug.LogWarning("Level "+this.name+" has no exit. Be sure to set the TopExit tag!");
 	
-		if(!isTutorial)
-			Debug.Log ("Level "+this.name+" Entrance:"+this.topEntrance.position+"/"+this.topEntrance.localPosition);
-		Debug.Log ("Level "+this.name+" Exit:"+this.topExit.position+"/"+this.topExit.localPosition);
-		Debug.Log ("Level "+this.name);
+		//if(!isTutorial)
+		//	Debug.Log ("Level "+this.name+" Entrance:"+this.topEntrance.position+"/"+this.topEntrance.localPosition);
+		//Debug.Log ("Level "+this.name+" Exit:"+this.topExit.position+"/"+this.topExit.localPosition);
+		//Debug.Log ("Level "+this.name);
 		if(levelExit == null)
 			Debug.Log("No exit! " +this.name);
 	}
@@ -67,13 +67,11 @@ public class Level : MonoBehaviour {
 	}
 
 	public void DestroyLevel() {
-		Debug.Log ("Destroy!");
 		Destroy(levelExit.gameObject);
 		Destroy(this.gameObject);
 	}
 	
 	public override string ToString() {
 		return gameObject.name;
-	}
-	
+	}	
 }

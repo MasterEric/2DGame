@@ -25,27 +25,34 @@ public class Level : MonoBehaviour {
 		if(this.topExit == null)
 			Debug.LogWarning("Level "+this.name+" has no exit. Be sure to set the TopExit tag!");
 	
-		//if(!isTutorial)
-		//	Debug.Log ("Level "+this.name+" Entrance:"+this.topEntrance.position+"/"+this.topEntrance.localPosition);
-		//Debug.Log ("Level "+this.name+" Exit:"+this.topExit.position+"/"+this.topExit.localPosition);
+		if(!isTutorial)
+			Debug.Log ("Level "+this.name+" Entrance:"+this.topEntrance.position+"/"+this.topEntrance.localPosition);
+		Debug.Log ("Level "+this.name+" Exit:"+this.topExit.position+"/"+this.topExit.localPosition);
 		Debug.Log ("Level "+this.name);
 		if(levelExit == null)
 			Debug.Log("No exit! " +this.name);
-	}
-	
-	// Update is called once per frame
-	void Update () {
-
 	}
 
 	public Vector2 GetEntrancePosition() {
 		if(topEntrance == null)
 			Debug.LogWarning("Entrance doesn't exist!");
-		return this.topEntrance.position;
+		return topEntrance.position;
 	}
 
+	public Vector3 GetEntrancePositionVector3() {
+		if(topEntrance == null)
+			Debug.LogWarning("Entrance doesn't exist!");
+		return topEntrance.position;
+	}
+	
 	public Vector2 GetExitPosition() {
-		if(topExit == null)
+		if(this.topExit == null)
+			Debug.LogWarning("Exit doesn't exist!");
+		return this.topExit.position;
+	}
+
+	public Vector3 GetExitPositionVector3() {
+		if(this.topExit == null)
 			Debug.LogWarning("Exit doesn't exist!");
 		return this.topExit.position;
 	}
@@ -64,4 +71,9 @@ public class Level : MonoBehaviour {
 		Destroy(levelExit.gameObject);
 		Destroy(this.gameObject);
 	}
+	
+	public override string ToString() {
+		return gameObject.name;
+	}
+	
 }

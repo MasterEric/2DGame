@@ -24,7 +24,14 @@ public class LevelManager : MonoBehaviour {
 	void Start () {
 		this.tag = "LevelManager";
 		levelQueue = new Level[5];
+		InitializeLevel();
+	}
+
+	IEnumerator InitializeLevel() {
 		//Load first 3 levels.
+		if(tutorialLevel == null)
+			yield return null;
+		
 		levelQueue[2] = tutorialLevel.GetComponent<Level>();
 		levelQueue[3] = AddLevel(GetRandomPrefabIndex());
 		PositionLevel(levelQueue[2], levelQueue[3]);
@@ -56,7 +63,7 @@ public class LevelManager : MonoBehaviour {
 	public void MoveQueueUp () {
 		if(levelQueue[0] != null)
 			levelQueue[0].DestroyLevel();
-
+		
 		levelQueue[0] = levelQueue[1];
 		levelQueue[1] = levelQueue[2];
 		levelQueue[2] = levelQueue[3];
@@ -64,4 +71,5 @@ public class LevelManager : MonoBehaviour {
 		levelQueue[4] = AddLevel(GetRandomPrefabIndex());
 		PositionLevel(levelQueue[3], levelQueue[4]);
 	}
+
 }

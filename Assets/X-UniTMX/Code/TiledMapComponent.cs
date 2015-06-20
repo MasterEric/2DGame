@@ -58,7 +58,7 @@ namespace X_UniTMX
 		public bool foldoutLayers = false;
 		public bool foldoutMapProperties = false;
 
-		public bool[] MakeUniqueTiles = null;
+		public bool[] MakeUniqueTiles = {true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true};
 
 		public bool[] tileLayersFoldoutProperties = null;
 		public bool[] objectLayersFoldoutProperties = null;

@@ -188,7 +188,7 @@ namespace X_UniTMX
 		/// <summary>
 		/// true to generate Unique Tiles on all tile layers
 		/// </summary>
-		public bool GlobalMakeUniqueTiles = false;
+		public bool GlobalMakeUniqueTiles = true;
 
 		private string _mapName = "Map";
 		private string _mapPath = "Map";

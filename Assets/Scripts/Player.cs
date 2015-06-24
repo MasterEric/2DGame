@@ -4,11 +4,13 @@ using System.Collections;
 public class Player : MonoBehaviour {
 
 	public AudioClip deathSound;
+	public GameObject gameOverUI;
 
 	public Powerup.Powerups[] currentPowerups = new Powerup.Powerups[4];
 
-	// Use this for initialization
 	void Start () {
+
+		gameOverUI.SetActive(false);
 	
 	}
 	
@@ -20,6 +22,7 @@ public class Player : MonoBehaviour {
 	public void Die(){
 
 		this.gameObject.SetActive(false);
+		gameOverUI.SetActive(true);
 
 	}
 

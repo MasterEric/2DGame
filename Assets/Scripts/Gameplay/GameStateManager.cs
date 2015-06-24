@@ -7,6 +7,7 @@ public class GameStateManager : MonoBehaviour {
 
 	void Awake () {
 		DontDestroyOnLoad(this.gameObject);
+		this.tag = "GameStateManager";
 		//Initialize player preferences.
 		//if(!PlayerPrefs.HasKey("ViewModelsEnabled"))
 		//	PlayerPrefs.SetInt("ViewModelsEnabled", 1);
@@ -21,6 +22,7 @@ public class GameStateManager : MonoBehaviour {
 	void Update() {
 		if(!isDone) {
 			SceneChanger.GetSceneChanger().SetScene(SceneChanger.GetSceneChanger().StartingScene);
+			KongregateManager.StartKongregateAPI();
 			isDone = true;
 		}
 	}

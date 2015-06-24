@@ -42,6 +42,10 @@ public class LevelManager : MonoBehaviour {
 		}
 	}
 
+	//Player GetPlayer() {
+	//	return GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+	//}
+
 	//Loads 
 	Level AddLevel(int prefabIndex) {
 		return Instantiate(levelList[prefabIndex].gameObject).GetComponent<Level>();

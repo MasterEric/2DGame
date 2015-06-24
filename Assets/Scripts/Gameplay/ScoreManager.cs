@@ -19,6 +19,6 @@ public class ScoreManager : MonoBehaviour {
 		currentScore += scoreOnLevelChange;
 	}
 	public void CollectPowerUp() {
-		currentScore += 
+		//currentScore += 
 	}
 }

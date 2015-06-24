@@ -13,11 +13,10 @@ public class Powerup : MonoBehaviour {
 		LightArmor = 3,
 		MediumArmor = 4,
 		HeavyArmor = 5,
-		PlasmaShield = 6,
-		WalkOnLiquid = 7,
-		Speedup2X = 8,
-		Speedup3X = 9,
-		Autopilot = 10
+		WalkOnLiquid = 6,
+		Speedup2X = 7,
+		Speedup3X = 8,
+		Autopilot = 9
 		
 	}
 

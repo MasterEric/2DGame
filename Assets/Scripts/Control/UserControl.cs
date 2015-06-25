@@ -2,7 +2,6 @@
 using UnityEngine;
 using UnityStandardAssets.CrossPlatformInput;
 
-[RequireComponent(typeof (Rigidbody2D), typeof(GroundChecker), typeof(CharacterMotor))]
 public class UserControl : MonoBehaviour {
 	CharacterMotor m_Character;
 	GroundChecker m_GroundChecker;
@@ -10,7 +9,9 @@ public class UserControl : MonoBehaviour {
 	public int extraJumpCount = 1;	
 	int m_Jump = 0;
 	GroundChecker.Direction m_isJumping = GroundChecker.Direction.NONE;	
-	
+
+
+
 	void Awake() {
 		m_Character = GetComponent<CharacterMotor>();
 		m_GroundChecker = GetComponent<GroundChecker>();

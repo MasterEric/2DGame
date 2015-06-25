@@ -5,6 +5,7 @@ public class Player : MonoBehaviour {
 
 	public AudioClip deathSound;
 	public GameObject gameOverUI;
+	public GameObject gameHUD;
 
 	public Powerup.Powerups[] currentPowerups = new Powerup.Powerups[4];
 
@@ -14,15 +15,11 @@ public class Player : MonoBehaviour {
 	
 	}
 	
-	// Update is called once per frame
-	void Update () {
-	
-	}
-
 	public void Die(){
 
 		this.gameObject.SetActive(false);
 		gameOverUI.SetActive(true);
+		gameHUD.SetActive(false);
 
 	}
 

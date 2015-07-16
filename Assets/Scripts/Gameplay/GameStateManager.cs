@@ -22,7 +22,7 @@ public class GameStateManager : MonoBehaviour {
 	void Update() {
 		if(!isDone) {
 			SceneChanger.GetSceneChanger().SetScene(SceneChanger.GetSceneChanger().StartingScene);
-			KongregateManager.StartKongregateAPI();
+			//KongregateManager.StartKongregateAPI();
 			isDone = true;
 		}
 	}

@@ -22,10 +22,10 @@ public class ScoreManager : MonoBehaviour {
 	}
     void Update () {
     	if(GameHUD.DoesGameHUDExist()) {
-            GameHUD.GetGameHUD().SetScore(currentScore)
+			GameHUD.GetGameHUD().SetScore(currentScore);
         }
        	if(DeathHUD.DoesDeathHUDExist()) {
-            DeathHUDGetDeathHUD().SetScore(currentScore)
+			DeathHUD.GetDeathHUD().SetScore(currentScore);
         }
     }
 	public static int GetCurrentScore() {

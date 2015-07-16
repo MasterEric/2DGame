@@ -45,13 +45,13 @@ public class SocialManager : MonoBehaviour {
     private const string FACEBOOK_URL = "http://www.facebook.com/dialog/feed";
  
     public void ShareScoreToFacebook(int score) {
-        string link;
+        string link = "";
         string name = "Check out Gamename!";
         string caption = "Try out this endless platformer now!";
         string description = "I just scored "+score+"points in Gamename!";
-        string picture;
+        string picture = "";
         string redirect = "http://www.facebook.com";
-        ShareToFacebook (link, name, caption, description, picture, redirect)
+		ShareToFacebook (link, name, caption, description, picture, redirect);
     }
  
     public void ShareToFacebook (string link, string name, string caption, string description, string picture, string redirect) {

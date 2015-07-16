@@ -4,6 +4,7 @@ using System.Collections;
 public class ScoreManager : MonoBehaviour {
 	Player player;
 	public int currentScore = 0;
+	public int currentHighScore = 0;
 
 	const int scoreOnLevelChange = 100;
 	const int scoreOnShieldCollect = 50;
@@ -12,7 +13,6 @@ public class ScoreManager : MonoBehaviour {
 	void Start () {
     	this.tag = "ScoreManager";
         currentScore = 0;
-		player = GetComponent<Player>();
 	}
     public static bool DoesScoreManagerExist() {
 		return GameObject.FindGameObjectWithTag("ScoreManager") != null;
@@ -21,17 +21,29 @@ public class ScoreManager : MonoBehaviour {
 		return GameObject.FindGameObjectWithTag("ScoreManager").GetComponent<ScoreManager>();
 	}
     void Update () {
-    	if(GameHUD.DoesGameHUDExist()) {
+		currentHighScore = PlayerPrefs.GetInt("HighScore", 0);
+        if(GameHUD.DoesGameHUDExist()) {
 			GameHUD.GetGameHUD().SetScore(currentScore);
+			GameHUD.GetGameHUD().SetHighscore(currentHighScore);
         }
        	if(DeathHUD.DoesDeathHUDExist()) {
 			DeathHUD.GetDeathHUD().SetScore(currentScore);
+				GameHUD.GetGameHUD().SetHighscore(currentHighScore);
         }
+
     }
-	public static int GetCurrentScore() {
-		return GameObject.FindGameObjectWithTag("Player").GetComponent<ScoreManager>().currentScore;
+	public int GetCurrentScore() {
+		return currentScore;
 	}
+    public int GetHighScore() {
+        return currentHighScore;
+    }
 	public void ChangeLevel() {
 		currentScore += scoreOnLevelChange;
 	}
+    public void CheckHighScore() {
+        if(currentScore >= currentHighScore) {
+			PlayerPrefs.SetInt("HighScore", currentScore);
+        }
+    }
 }

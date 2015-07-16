@@ -45,21 +45,22 @@ public class DemoScene : MonoBehaviour
 	float _wallJumpAcceleration;
 	public float wallJumpTime = 2.75f;
 
+	// Toxoid's vars
+
+	private bool isTouchingSurface = true;
+
+	// =============
+
 
 	void Awake()
 	{
-		//_animator = GetComponent<Animator>();
 		_controller = GetComponent<CharacterController2D>();
 		m_GroundChecker = GetComponent<GroundChecker>();
 
-		// listen to some events for illustration purposes
-		_controller.onControllerCollidedEvent += onControllerCollider;
-		_controller.onTriggerEnterEvent += onTriggerEnterEvent;
-		_controller.onTriggerExitEvent += onTriggerExitEvent;
 	}
 
 
-	#region Event Listeners
+
 
 	void onControllerCollider( RaycastHit2D hit )
 	{
@@ -75,15 +76,17 @@ public class DemoScene : MonoBehaviour
 	void onTriggerEnterEvent( Collider2D col )
 	{
 
+		isTouchingSurface = true;
+
 	}
 
 
 	void onTriggerExitEvent( Collider2D col )
 	{
 
-	}
+		isTouchingSurface = false;
 
-	#endregion
+	}
 
 
 	// the Update loop contains a very simple example of moving the character around and controlling the animation
@@ -169,7 +172,7 @@ public class DemoScene : MonoBehaviour
 		//_runVelocity.x = Mathf.SmoothDamp( _runVelocity.x, normalizedHorizontalSpeed * runSpeed, ref _acceleration, smoothTime);
 		_runVelocity.x = normalizedHorizontalSpeed * runSpeed;
 		_velocity.x = _runVelocity.x;
-
+		
 		_wallJumpVelocity.x = Mathf.SmoothDamp(_wallJumpVelocity.x, 0, ref _wallJumpAcceleration, wallJumpTime);
 		_velocity.x += _wallJumpVelocity.x;
 
@@ -201,6 +204,7 @@ public class DemoScene : MonoBehaviour
 				break;
 		}
 
+
 		m_isJumping = GroundChecker.Direction.NONE;
 
 		// apply gravity before moving
@@ -216,11 +220,13 @@ public class DemoScene : MonoBehaviour
 			_velocity.y = -maxVerticalSpeed;
 
 
-
 		_controller.move( _velocity * Time.deltaTime );
+
 
 		// grab our current _velocity to use as a base for all calculations
 		_velocity = _controller.velocity;
 	}
+
+
 
 }

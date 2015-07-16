@@ -13,6 +13,7 @@ public class GroundChecker : MonoBehaviour {
 		BOTTOM,
 		LEFT,
 		RIGHT,
+		OMNI,
 		NONE
 	}
 
@@ -26,6 +27,12 @@ public class GroundChecker : MonoBehaviour {
 				return GroundCheckLeftCollider.IsTouchingLayers(GroundLayers.value);
 			case Direction.RIGHT:
 				return GroundCheckRightCollider.IsTouchingLayers(GroundLayers.value);
+			case Direction.OMNI:
+				if(this.IsGrounded(GroundChecker.Direction.TOP) || this.IsGrounded(GroundChecker.Direction.BOTTOM) || this.IsGrounded(GroundChecker.Direction.LEFT) || this.IsGrounded(GroundChecker.Direction.RIGHT)){
+					return true;
+				} else {
+					return false;
+				}
 			default:	
 				return false;
 		}

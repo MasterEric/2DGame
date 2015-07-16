@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-[RequireComponent(typeof (Rigidbody2D), typeof(GroundChecker), typeof(UserControl))]
 public class CharacterMotor : MonoBehaviour {
 	//Configuration variables.
 	public float movementSpeed = 10f;

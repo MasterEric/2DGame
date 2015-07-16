@@ -10,6 +10,8 @@ public class ItemSpawner : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 
+		this.GetComponent<SpriteRenderer>().enabled = false;
+
 		int puToSpawn = Random.Range(0, possibleSpawns.Length);
 
 		Powerup p = Instantiate(powerupPrefab, this.transform.position, Quaternion.identity) as Powerup;

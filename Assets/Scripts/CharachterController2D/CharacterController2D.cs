@@ -107,7 +107,7 @@ namespace Prime31
 		/// the max slope angle that the CC2D can climb
 		/// </summary>
 		/// <value>The slope limit.</value>
-		[Range( 0, 90f )]
+		[Range( 0f, 90f )]
 		public float slopeLimit = 30f;
 
 		/// <summary>
@@ -120,7 +120,7 @@ namespace Prime31
 		/// <summary>
 		/// curve for multiplying speed based on slope (negative = down slope and positive = up slope)
 		/// </summary>
-		public AnimationCurve slopeSpeedMultiplier = new AnimationCurve( new Keyframe( -90, 1.5f ), new Keyframe( 0, 1 ), new Keyframe( 90, 0 ) );
+		public AnimationCurve slopeSpeedMultiplier = new AnimationCurve( new Keyframe( -90f, 1.5f ), new Keyframe( 0f, 1f ), new Keyframe( 90f, 0f ) );
 
 		[Range( 2, 20 )]
 		public int totalHorizontalRays = 8;
@@ -196,8 +196,13 @@ namespace Prime31
 			for( var i = 0; i < 32; i++ )
 			{
 				// see if our triggerMask contains this layer and if not ignore it
-				if( ( triggerMask.value & 1 << i ) == 0 )
-					Physics2D.IgnoreLayerCollision( gameObject.layer, i );
+
+				//ERR CODE SECTION ==================================================
+
+				//if( ( triggerMask.value & 1 << i ) == 0 )
+					//Physics2D.IgnoreLayerCollision( gameObject.layer, i );
+
+				//END ERR CODE SECTION ==============================================
 			}
 		}
 
@@ -537,7 +542,8 @@ namespace Prime31
 				{
 					// going down we want to speed up in most cases so the slopeSpeedMultiplier curve should be > 1 for negative angles
 					var slopeModifier = slopeSpeedMultiplier.Evaluate( -angle );
-					deltaMovement.y = _raycastHit.point.y - slopeRay.y - skinWidth;
+				    // we add the extra downward movement here to ensure we "stick" to the surface below
+					deltaMovement.y += _raycastHit.point.y - slopeRay.y - skinWidth;
 					deltaMovement.x *= slopeModifier;
 					collisionState.movingDownSlope = true;
 					collisionState.slopeAngle = angle;

@@ -19,8 +19,10 @@ public class LevelExit : MonoBehaviour {
 			Vector3 blockpos = this.transform.position + Vector3.left + Vector3.left + Vector3.down;
 			blockExit = (GameObject)Instantiate(LevelManager.GetLevelManager().blockPrefab, blockpos, Quaternion.identity);
 			LevelManager.GetLevelManager().MoveQueueUp();
-			//other.gameObject.GetComponent<ScoreManager>().
-			//Increment score.
+            //Increment score.
+			if(ScoreManager.DoesScoreManagerExist()) {
+                ScoreManager.GetScoreManager().ChangeLevel()
+            }
 		}
 	}
 	
